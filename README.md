@@ -1,2 +1,4 @@
 # Kafka_Client
-This is a Kafka client which support topic creation, message publish and consumption, will add more use cases later.
+This is a Kafka client for topic creation, message publishing and consumption, 
+it connects with local kafka cluster running as KRaft mode. 
+
