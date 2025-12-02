@@ -1,17 +1,18 @@
 package org.daodao.kafka;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.daodao.kafka.util.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-@Slf4j
 public class KafkaMsgProducer {
+    private static final Logger log = LoggerFactory.getLogger(KafkaMsgProducer.class);
     public static void main(String[] args) {
         sendMessage(Constants.TOPIC, "Hello, Kafka!");
     }

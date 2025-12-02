@@ -1,18 +1,19 @@
 package org.daodao.kafka;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.daodao.kafka.util.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-@Slf4j
 public class KafkaMsgConsumer {
+    private static final Logger log = LoggerFactory.getLogger(KafkaMsgConsumer.class);
 
     public static void main(String[] args) {
         consumeMessages(Constants.TOPIC);
