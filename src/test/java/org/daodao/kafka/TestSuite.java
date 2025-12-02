@@ -205,8 +205,10 @@ class TestSuite {
         }
     }
 
+
+
     @Test
-    @Order(5)
+    @Order(6)
     @DisplayName("Kafka 4.0.0 New Features Tests")
     void runNewKafkaFeaturesTests() {
         log.info("Running Kafka 4.0.0 New Features Tests...");
@@ -218,34 +220,39 @@ class TestSuite {
             newFeaturesTests.testKRaftModeFeatures();
             log.debug("✓ KRaft mode features test passed");
             
-            newFeaturesTests.testImprovedProducerFeatures();
-            log.debug("✓ Improved producer features test passed");
+            newFeaturesTests.testEnhancedProducerIdempotence();
+            log.debug("✓ Enhanced producer idempotence test passed");
             
-            newFeaturesTests.testImprovedConsumerFeatures();
-            log.debug("✓ Improved consumer features test passed");
+            newFeaturesTests.testImprovedConsumerRebalancing();
+            log.debug("✓ Improved consumer rebalancing test passed");
             
-            newFeaturesTests.testNewAdminClientFeatures();
-            log.debug("✓ New admin client features test passed");
+            newFeaturesTests.testEnhancedAdminClientCapabilities();
+            log.debug("✓ Enhanced admin client capabilities test passed");
             
-            newFeaturesTests.testPerformanceImprovements();
-            log.debug("✓ Performance improvements test passed");
+            newFeaturesTests.testFlexibleTopicNamingAndConfiguration();
+            log.debug("✓ Flexible topic naming and configuration test passed");
             
-            newFeaturesTests.testSecurityImprovements();
-            log.debug("✓ Security improvements test passed");
+            newFeaturesTests.testEnhancedSecurityFeatures();
+            log.debug("✓ Enhanced security features test passed");
+            
+            newFeaturesTests.testPerformanceOptimizations();
+            log.debug("✓ Performance optimizations test passed");
+            
+            newFeaturesTests.testImprovedErrorHandlingAndRecovery();
+            log.debug("✓ Improved error handling and recovery test passed");
             
             newFeaturesTests.testKafkaVersionCompatibility();
             log.debug("✓ Kafka version compatibility test passed");
             
-            newFeaturesTests.testConfigurationValidation();
-            log.debug("✓ Configuration validation test passed");
-            
-            log.info("All Kafka 4.0.0 New Features Tests (8/8) passed successfully");
+            log.info("All Kafka 4.0.0 New Features Tests (9/9) passed successfully");
             
         } catch (Exception e) {
             log.error("Kafka 4.0.0 New Features Tests failed: {}", e.getMessage(), e);
             fail("Kafka 4.0.0 New Features Tests failed: " + e.getMessage());
         }
     }
+
+
 
     @Test
     @Order(6)
@@ -258,8 +265,8 @@ class TestSuite {
         log.info("1. Topic Management Tests: 8 tests");
         log.info("2. Message Producer Tests: 9 tests");
         log.info("3. Message Consumer Tests: 10 tests");
-        log.info("4. Kafka 4.0.0 New Features Tests: 8 tests");
-        log.info("Total Tests: 35");
+        log.info("4. Kafka 4.0.0 New Features Tests: 9 tests");
+        log.info("Total Tests: 36");
         log.info("Status: ALL TESTS PASSED");
         log.info("=".repeat(60));
         

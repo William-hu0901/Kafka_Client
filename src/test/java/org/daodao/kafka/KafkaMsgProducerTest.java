@@ -95,9 +95,9 @@ class KafkaMsgProducerTest {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, Constants.BROKERS);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, Constants.STR_SERIALIZER);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, Constants.STR_SERIALIZER);
-        props.put(ProducerConfig.RETRIES_CONFIG, 3);
+        props.put(ProducerConfig.RETRIES_CONFIG, "3");
         
-        assertEquals(3, props.get(ProducerConfig.RETRIES_CONFIG));
+        assertEquals("3", props.get(ProducerConfig.RETRIES_CONFIG));
         
         try (Producer<String, String> producer = new KafkaProducer<>(props)) {
             assertNotNull(producer);

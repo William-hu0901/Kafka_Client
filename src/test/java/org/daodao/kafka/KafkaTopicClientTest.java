@@ -17,7 +17,7 @@ class KafkaTopicClientTest {
         NewTopic topic = new NewTopic("test-topic", 1, (short) 1);
         assertEquals("test-topic", topic.name());
         assertEquals(1, topic.numPartitions());
-        assertEquals((short) 1, topic.replicationFactor());
+        assertEquals(1, topic.replicationFactor());
     }
 
     @Test
@@ -25,7 +25,7 @@ class KafkaTopicClientTest {
         NewTopic topic = new NewTopic("multi-partition-topic", 3, (short) 2);
         assertEquals("multi-partition-topic", topic.name());
         assertEquals(3, topic.numPartitions());
-        assertEquals((short) 2, topic.replicationFactor());
+        assertEquals(2, topic.replicationFactor());
     }
 
     @Test
