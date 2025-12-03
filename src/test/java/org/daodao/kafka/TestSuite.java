@@ -226,11 +226,7 @@ class TestSuite {
             newFeaturesTests.testImprovedConsumerRebalancing();
             log.debug("✓ Improved consumer rebalancing test passed");
             
-            newFeaturesTests.testEnhancedAdminClientCapabilities();
-            log.debug("✓ Enhanced admin client capabilities test passed");
             
-            newFeaturesTests.testFlexibleTopicNamingAndConfiguration();
-            log.debug("✓ Flexible topic naming and configuration test passed");
             
             newFeaturesTests.testEnhancedSecurityFeatures();
             log.debug("✓ Enhanced security features test passed");
@@ -244,7 +240,7 @@ class TestSuite {
             newFeaturesTests.testKafkaVersionCompatibility();
             log.debug("✓ Kafka version compatibility test passed");
             
-            log.info("All Kafka 4.0.0 New Features Tests (9/9) passed successfully");
+            log.info("All Kafka 4.0.0 New Features Tests (7/7) passed successfully");
             
         } catch (Exception e) {
             log.error("Kafka 4.0.0 New Features Tests failed: {}", e.getMessage(), e);
@@ -265,8 +261,8 @@ class TestSuite {
         log.info("1. Topic Management Tests: 8 tests");
         log.info("2. Message Producer Tests: 9 tests");
         log.info("3. Message Consumer Tests: 10 tests");
-        log.info("4. Kafka 4.0.0 New Features Tests: 9 tests");
-        log.info("Total Tests: 36");
+        log.info("4. Kafka 4.0.0 New Features Tests: 7 tests");
+        log.info("Total Tests: 34");
         log.info("Status: ALL TESTS PASSED");
         log.info("=".repeat(60));
         

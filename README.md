@@ -8,7 +8,7 @@ A comprehensive Kafka client library for topic creation, message publishing and 
 - **Message Production**: Send messages with various configurations
 - **Message Consumption**: Subscribe and consume messages from topics
 - **Kafka 4.0.0 Support**: Latest features including KRaft mode, idempotent producers, exactly-once semantics, and enhanced error handling
-- **Comprehensive Testing**: Full test suite with 38 tests across 4 test categories
+- **Comprehensive Testing**: Full test suite with 41 tests across 4 test categories
 - **Multi-JDK Support**: Compatible with Java 17 and Java 21 using Maven toolchains
 - **Detailed Logging**: Extensive logging support for debugging and monitoring
 
@@ -32,8 +32,10 @@ Kafka_Client/
 │       ├── KafkaTopicClientTest.java   # Topic management tests (8 tests)
 │       ├── KafkaMsgProducerTest.java  # Producer tests (9 tests)
 │       ├── KafkaMsgConsumerTest.java  # Consumer tests (10 tests)
-│       ├── NewKafkaFeaturesTest.java   # Kafka 4.0.0 new features tests (8 tests)
-│       └── TestSuite.java              # Complete test suite (35 tests + 1 suite test)
+│       ├── NewKafkaFeaturesTest.java   # Kafka 4.0.0 new features tests (7 tests)
+│       ├── KafkaAdvancedFeaturesTest.java # Advanced Kafka features tests
+│       ├── NewKafkaMonitoringTest.java  # Kafka monitoring tests
+│       └── TestSuite.java              # Complete test suite (7 tests + 1 suite test)
 ├── src/test/resources/
 │   └── logback-test.xml            # Test logging configuration
 ├── logs/                           # Application logs directory
@@ -100,7 +102,7 @@ mvn -t .m2/toolchains.xml test -Dtest=KafkaMsgProducerTest
 # Consumer Tests (10 tests)
 mvn -t .m2/toolchains.xml test -Dtest=KafkaMsgConsumerTest
 
-# Kafka 4.0.0 Features Tests (8 tests)
+# Kafka 4.0.0 Features Tests (7 tests)
 mvn -t .m2/toolchains.xml test -Dtest=NewKafkaFeaturesTest
 ```
 
@@ -119,7 +121,7 @@ mvn -t .m2/toolchains.xml clean package
 ## Test Coverage
 
 ### Test Suite Statistics
-- **Total Tests**: 36 (35 individual tests + 1 test suite)
+- **Total Tests**: 41 (40 individual tests + 1 test suite)
 - **Test Categories**: 4
 - **Test Success Rate**: 100%
 - **Java Compatibility**: Java 17 and Java 21
@@ -148,15 +150,14 @@ mvn -t .m2/toolchains.xml clean package
 - Duration usage and timeout handling
 - Static method existence verification
 
-### Kafka 4.0.0 New Features Tests (8 tests)
-- KRaft mode compatibility
-- Improved producer features (idempotence, delivery timeouts)
-- Enhanced consumer features (poll optimization)
-- New AdminClient capabilities
-- Performance improvements (batching, compression)
-- Security improvements (SSL/TLS configuration)
-- Version compatibility validation
-- Configuration validation for all components
+### Kafka 4.0.0 New Features Tests (7 tests)
+- KRaft mode features - Tests KRaft (Kafka Raft) mode configuration and admin client creation
+- Enhanced producer idempotence - Tests producer configuration for exactly-once semantics
+- Improved consumer rebalancing - Tests cooperative sticky partition assignment strategy
+- Enhanced security features - Tests TLS 1.3 and SASL configuration for secure communication
+- Performance optimizations - Tests producer configuration for optimal throughput
+- Improved error handling and recovery - Tests retry, timeout, and transactional configurations
+- Kafka version compatibility - Validates Kafka 4.0.0 class availability and configuration
 
 ## Building
 
@@ -249,5 +250,5 @@ mvn -t .m2/toolchains.xml exec:java -Dexec.mainClass="org.daodao.kafka.KafkaMsgC
 - **Independent Tests**: All tests are designed to be independent and can run in parallel
 - **KRaft Mode**: Designed to work with Kafka 4.0.0 in KRaft mode (no Zookeeper)
 - **Comprehensive Logging**: Extensive logging support for debugging and monitoring
-- **100% Test Coverage**: 36 tests covering all major functionality 
+- **100% Test Coverage**: 41 tests covering all major functionality 
 
