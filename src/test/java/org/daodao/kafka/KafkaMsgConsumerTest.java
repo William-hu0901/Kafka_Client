@@ -100,9 +100,9 @@ class KafkaMsgConsumerTest {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, Constants.DESERIALIZER);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, Constants.DESERIALIZER);
-        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 100);
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "100");
         
-        assertEquals(100, props.get(ConsumerConfig.MAX_POLL_RECORDS_CONFIG));
+        assertEquals("100", props.get(ConsumerConfig.MAX_POLL_RECORDS_CONFIG));
         
         try (Consumer<String, String> consumer = new KafkaConsumer<>(props)) {
             assertNotNull(consumer);
@@ -116,9 +116,9 @@ class KafkaMsgConsumerTest {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, Constants.DESERIALIZER);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, Constants.DESERIALIZER);
-        props.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 300000);
+        props.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, "300000");
         
-        assertEquals(300000, props.get(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG));
+        assertEquals("300000", props.get(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG));
         
         try (Consumer<String, String> consumer = new KafkaConsumer<>(props)) {
             assertNotNull(consumer);
