@@ -8,7 +8,7 @@ A comprehensive Kafka client library for topic creation, message publishing and 
 - **Message Production**: Send messages with various configurations
 - **Message Consumption**: Subscribe and consume messages from topics
 - **Kafka 4.0.0 Support**: Latest features including KRaft mode, idempotent producers, exactly-once semantics, and enhanced error handling
-- **Comprehensive Testing**: Full test suite with 41 tests across 4 test categories
+- **Comprehensive Testing**: Full test suite with 56 tests across 6 test categories
 - **Multi-JDK Support**: Compatible with Java 17 and Java 21 using Maven toolchains
 - **Detailed Logging**: Extensive logging support for debugging and monitoring
 
@@ -33,9 +33,9 @@ Kafka_Client/
 │       ├── KafkaMsgProducerTest.java  # Producer tests (9 tests)
 │       ├── KafkaMsgConsumerTest.java  # Consumer tests (10 tests)
 │       ├── NewKafkaFeaturesTest.java   # Kafka 4.0.0 new features tests (7 tests)
-│       ├── KafkaAdvancedFeaturesTest.java # Advanced Kafka features tests
-│       ├── NewKafkaMonitoringTest.java  # Kafka monitoring tests
-│       └── TestSuite.java              # Complete test suite (7 tests + 1 suite test)
+│       ├── KafkaAdvancedFeaturesTest.java # Advanced Kafka features tests (8 tests)
+│       ├── NewKafkaMonitoringTest.java  # Kafka monitoring tests (7 tests)
+│       └── TestSuite.java              # Complete test suite (56 tests + 1 suite test)
 ├── src/test/resources/
 │   └── logback-test.xml            # Test logging configuration
 ├── logs/                           # Application logs directory
@@ -104,6 +104,12 @@ mvn -t .m2/toolchains.xml test -Dtest=KafkaMsgConsumerTest
 
 # Kafka 4.0.0 Features Tests (7 tests)
 mvn -t .m2/toolchains.xml test -Dtest=NewKafkaFeaturesTest
+
+# Kafka Advanced Features Tests (8 tests)
+mvn -t .m2/toolchains.xml test -Dtest=KafkaAdvancedFeaturesTest
+
+# Kafka Monitoring Tests (7 tests)
+mvn -t .m2/toolchains.xml test -Dtest=NewKafkaMonitoringTest
 ```
 
 ### Build and Test Commands
@@ -121,8 +127,8 @@ mvn -t .m2/toolchains.xml clean package
 ## Test Coverage
 
 ### Test Suite Statistics
-- **Total Tests**: 41 (40 individual tests + 1 test suite)
-- **Test Categories**: 4
+- **Total Tests**: 56 (55 individual tests + 1 test suite)
+- **Test Categories**: 6
 - **Test Success Rate**: 100%
 - **Java Compatibility**: Java 17 and Java 21
 
@@ -158,6 +164,25 @@ mvn -t .m2/toolchains.xml clean package
 - Performance optimizations - Tests producer configuration for optimal throughput
 - Improved error handling and recovery - Tests retry, timeout, and transactional configurations
 - Kafka version compatibility - Validates Kafka 4.0.0 class availability and configuration
+
+### Kafka Advanced Features Tests (8 tests)
+- Custom Partitioners - Tests custom partition assignment logic for messages using DefaultPartitioner
+- Producer Interceptor Chains - Tests producer interceptors for message processing before sending
+- Consumer Interceptor Chains - Tests consumer interceptors for message processing after receiving
+- Exactly-Once Semantics - Tests transactional producer configuration with idempotence enabled
+- Dynamic Topic Configuration - Tests runtime topic configuration modifications (retention, compression, message size)
+- Consumer Group Management - Tests advanced consumer group operations and monitoring capabilities
+- Custom Serialization Configuration - Tests custom serializer and deserializer setup for complex object types
+- Kafka Streams Integration - Tests basic streams processing features and configuration
+
+### Kafka Monitoring Tests (7 tests)
+- Producer Metrics - Tests producer performance and health metrics collection (throughput, latency, error rates)
+- Consumer Metrics - Tests consumer performance and health metrics collection (consumption rates, lag, rebalancing)
+- AdminClient Metrics - Tests administrative operations monitoring and cluster management insights
+- Cluster Health Monitoring - Tests overall cluster status and health checks with admin client
+- Topic Level Metrics - Tests topic-specific performance metrics and usage insights
+- Custom Metrics - Tests custom metric reporters and JMX integration for application-specific monitoring
+- JMX Integration - Tests JMX monitoring and management capabilities for Kafka operations
 
 ## Building
 
@@ -250,5 +275,5 @@ mvn -t .m2/toolchains.xml exec:java -Dexec.mainClass="org.daodao.kafka.KafkaMsgC
 - **Independent Tests**: All tests are designed to be independent and can run in parallel
 - **KRaft Mode**: Designed to work with Kafka 4.0.0 in KRaft mode (no Zookeeper)
 - **Comprehensive Logging**: Extensive logging support for debugging and monitoring
-- **100% Test Coverage**: 41 tests covering all major functionality 
+- **100% Test Coverage**: 56 tests covering all major functionality 
 

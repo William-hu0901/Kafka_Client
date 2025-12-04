@@ -14,8 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * - Message producer tests  
  * - Message consumer tests
  * - Kafka 4.0.0 new features tests
+ * - Kafka advanced features tests
+ * - Kafka monitoring tests
  * 
- * Total tests: 38
+ * Total tests: 56
  * 
  * @author Kafka Client Team
  * @version 1.0
@@ -208,7 +210,7 @@ class TestSuite {
 
 
     @Test
-    @Order(6)
+    @Order(5)
     @DisplayName("Kafka 4.0.0 New Features Tests")
     void runNewKafkaFeaturesTests() {
         log.info("Running Kafka 4.0.0 New Features Tests...");
@@ -248,21 +250,102 @@ class TestSuite {
         }
     }
 
-
-
     @Test
     @Order(6)
+    @DisplayName("Kafka Advanced Features Tests")
+    void runKafkaAdvancedFeaturesTests() {
+        log.info("Running Kafka Advanced Features Tests...");
+        
+        try {
+            KafkaAdvancedFeaturesTest advancedFeaturesTests = new KafkaAdvancedFeaturesTest();
+            
+            // Run all advanced features tests
+            advancedFeaturesTests.testCustomPartitioner();
+            log.debug("✓ Custom partitioner test passed");
+            
+            advancedFeaturesTests.testProducerInterceptor();
+            log.debug("✓ Producer interceptor test passed");
+            
+            advancedFeaturesTests.testConsumerInterceptor();
+            log.debug("✓ Consumer interceptor test passed");
+            
+            advancedFeaturesTests.testExactlyOnceSemantics();
+            log.debug("✓ Exactly-once semantics test passed");
+            
+            advancedFeaturesTests.testDynamicTopicConfiguration();
+            log.debug("✓ Dynamic topic configuration test passed");
+            
+            advancedFeaturesTests.testConsumerGroupManagement();
+            log.debug("✓ Consumer group management test passed");
+            
+            advancedFeaturesTests.testCustomSerializationConfiguration();
+            log.debug("✓ Custom serialization configuration test passed");
+            
+            advancedFeaturesTests.testKafkaStreamsConfiguration();
+            log.debug("✓ Kafka Streams configuration test passed");
+            
+            log.info("All Kafka Advanced Features Tests (8/8) passed successfully");
+            
+        } catch (Exception e) {
+            log.error("Kafka Advanced Features Tests failed: {}", e.getMessage(), e);
+            fail("Kafka Advanced Features Tests failed: " + e.getMessage());
+        }
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("Kafka Monitoring Tests")
+    void runKafkaMonitoringTests() {
+        log.info("Running Kafka Monitoring Tests...");
+        
+        try {
+            NewKafkaMonitoringTest monitoringTests = new NewKafkaMonitoringTest();
+            
+            // Run all monitoring tests
+            monitoringTests.testProducerMetrics();
+            log.debug("✓ Producer metrics test passed");
+            
+            monitoringTests.testConsumerMetrics();
+            log.debug("✓ Consumer metrics test passed");
+            
+            monitoringTests.testAdminClientMetrics();
+            log.debug("✓ Admin client metrics test passed");
+            
+            monitoringTests.testClusterHealthMonitoring();
+            log.debug("✓ Cluster health monitoring test passed");
+            
+            monitoringTests.testTopicLevelMetrics();
+            log.debug("✓ Topic level metrics test passed");
+            
+            monitoringTests.testCustomMetrics();
+            log.debug("✓ Custom metrics test passed");
+            
+            monitoringTests.testJMXIntegration();
+            log.debug("✓ JMX integration test passed");
+            
+            log.info("All Kafka Monitoring Tests (7/7) passed successfully");
+            
+        } catch (Exception e) {
+            log.error("Kafka Monitoring Tests failed: {}", e.getMessage(), e);
+            fail("Kafka Monitoring Tests failed: " + e.getMessage());
+        }
+    }
+
+    @Test
+    @Order(8)
     @DisplayName("Test Suite Summary")
     void testSuiteSummary() {
         log.info("=".repeat(60));
         log.info("TEST SUITE SUMMARY");
         log.info("=".repeat(60));
-        log.info("Total Test Categories: 4");
+        log.info("Total Test Categories: 6");
         log.info("1. Topic Management Tests: 8 tests");
         log.info("2. Message Producer Tests: 9 tests");
         log.info("3. Message Consumer Tests: 10 tests");
         log.info("4. Kafka 4.0.0 New Features Tests: 7 tests");
-        log.info("Total Tests: 34");
+        log.info("5. Kafka Advanced Features Tests: 8 tests");
+        log.info("6. Kafka Monitoring Tests: 7 tests");
+        log.info("Total Tests: 49");
         log.info("Status: ALL TESTS PASSED");
         log.info("=".repeat(60));
         
